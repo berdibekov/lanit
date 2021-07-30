@@ -14,9 +14,9 @@ if [ $? -ne 0 ]; then
   exit $?
 fi
 # ---------------------------------------------------------------------------
-cp -f target\Person-Car-app-0.0.1.jar dist
+cp -f target/Person-Car-app-0.0.1.jar dist
 cp -f conf/app.sh dist
-chmod a+x dist/tl.sh
+chmod a+x dist/app.sh
 rm -rf target/
 # ---------------------------------------------------------------------------
 echo
