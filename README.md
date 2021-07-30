@@ -1,6 +1,6 @@
 
- #The results of the completed test task:
- 
+ The results of the completed test task:
+ -
  1. Person and cars application - REST API application based on Spring boot framework(Spring Data,MVC).
    
  1. Database - H2 In-memory (with persons,cars)
