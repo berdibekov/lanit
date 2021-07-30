@@ -43,13 +43,10 @@ public class PersonController {
             throw new ResourceAlreadyExistsException(getMessage(person));
         }
         LocalDate birthDate = person.getBirthDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-
         birthDateValidator.validate(birthDate);
         personRepository.save(person);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
     private String getMessage(Person person) {
         return "Person with id : " + person.getId() + " already exists.";

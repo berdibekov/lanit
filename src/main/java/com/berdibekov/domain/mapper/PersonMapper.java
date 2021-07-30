@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -18,12 +19,10 @@ public class PersonMapper {
     private final ModelMapper mapper;
     private final DateFormat format;
 
-    public PersonMapper(ModelMapper mapper) {
+    public PersonMapper(ModelMapper mapper, @Value("${dateFormatPattern}") String pattern) {
         this.mapper = mapper;
-        format = new SimpleDateFormat("dd.MM.yyyy");
-//        mapper.createTypeMap(String.class, Date.class);
+        format = new SimpleDateFormat(pattern);
         mapper.addConverter(convertStringToDate);
-
         mapper.addConverter(convertDateToString);
     }
 

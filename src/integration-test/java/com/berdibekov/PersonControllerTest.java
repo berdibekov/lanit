@@ -4,7 +4,6 @@ import com.berdibekov.api.controller.PersonController;
 import com.berdibekov.domain.Person;
 import com.berdibekov.domain.dto.PersonDto;
 import com.berdibekov.dto.error.ErrorDetail;
-import com.berdibekov.dto.error.ValidationError;
 import com.berdibekov.repository.PersonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,10 +24,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.inject.Inject;
-
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
