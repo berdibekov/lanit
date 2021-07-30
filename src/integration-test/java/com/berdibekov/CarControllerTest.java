@@ -82,7 +82,7 @@ public class CarControllerTest {
     @Test
     void saveCar_shouldResponseBadRequestWithAllFieldIssueMessages_whenPersonWithIdNotExists() throws Exception {
         String expectedMessage = "Input validation failed";
-        Set<String> expectedErrorCodes = new HashSet<>(List.of("id", "hoursPower", "model", "ownerId"));
+        Set<String> expectedErrorCodes = new HashSet<>(List.of("id", "horsePower", "model", "ownerId"));
         CarDto carDto = new CarDto();
         carDto.setId("");
         carDto.setOwnerId(null);

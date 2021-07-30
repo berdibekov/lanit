@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class DateFormatValidator implements ConstraintValidator<BirthDateConstraint, String> {
 
-    String message = "Invalid date format. Should be [dd.MM.yyyy]";
+    String message = "Invalid date format. Should be : ";
 
     @Value("${dateFormatPattern}")
     @Setter(AccessLevel.PACKAGE)
@@ -30,7 +30,7 @@ public class DateFormatValidator implements ConstraintValidator<BirthDateConstra
     }
 
     String message() {
-        return message;
+        return message + dateFormatPattern;
     }
 
     @Override

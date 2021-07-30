@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Target( {ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BirthDateConstraint {
-    String message() default "Invalid date format. Should be [dd.MM.yyyy]";
+    String message() default "Invalid date format.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
