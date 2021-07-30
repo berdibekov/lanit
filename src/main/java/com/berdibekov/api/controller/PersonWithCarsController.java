@@ -5,6 +5,8 @@ import com.berdibekov.domain.Person;
 import com.berdibekov.domain.dto.CarDto;
 import com.berdibekov.domain.dto.PersonDto;
 import com.berdibekov.domain.dto.PersonWithCars;
+import com.berdibekov.domain.mapper.CarMapper;
+import com.berdibekov.domain.mapper.PersonMapper;
 import com.berdibekov.exception.ResourceNotFoundException;
 import com.berdibekov.repository.CarRepository;
 import com.berdibekov.repository.PersonRepository;
@@ -26,14 +28,17 @@ import java.util.stream.Collectors;
 public class PersonWithCarsController {
     private final PersonRepository personRepository;
     private final CarRepository carRepository;
-    private final ModelMapper modelMapper;
+    private final CarMapper carMapper;
+    private final PersonMapper personMapper;
 
     public PersonWithCarsController(PersonRepository personRepository,
                                     CarRepository carRepository,
-                                    ModelMapper modelMapper) {
+                                    CarMapper carMapper,
+                                    PersonMapper personMapper) {
         this.personRepository = personRepository;
         this.carRepository = carRepository;
-        this.modelMapper = modelMapper;
+        this.carMapper = carMapper;
+        this.personMapper = personMapper;
     }
 
     @ApiOperation(value = "Get person with his/her cars.")
@@ -42,8 +47,8 @@ public class PersonWithCarsController {
         Person person = personRepository.findById(personId).
                 orElseThrow(() -> new ResourceNotFoundException(getMessage(personId)));
         Collection<Car> cars = carRepository.findAllByOwnerId(personId);
-        List<CarDto> carsDTOs = cars.stream().map(entity -> modelMapper.map(entity, CarDto.class)).collect(Collectors.toList());
-        PersonWithCars personWithCars = new PersonWithCars(modelMapper.map(person, PersonDto.class), carsDTOs);
+        List<CarDto> carsDTOs = cars.stream().map(carMapper::toDto).collect(Collectors.toList());
+        PersonWithCars personWithCars = new PersonWithCars(personMapper.toDto(person), carsDTOs);
         return new ResponseEntity<>(personWithCars, HttpStatus.OK);
     }
 

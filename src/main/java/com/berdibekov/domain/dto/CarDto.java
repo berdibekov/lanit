@@ -25,8 +25,8 @@ public class CarDto {
     @NotNull
     @Min(1)
     @Digits(integer = 10, fraction = 0)
-    @JsonProperty(value = "hoursPower")
-    String hoursPower;
+    @JsonProperty(value = "horsePower")
+    String horsePower;
 
     @NotBlank
     @Digits(integer = 20, fraction = 0)

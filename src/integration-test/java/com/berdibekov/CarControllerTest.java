@@ -60,7 +60,7 @@ public class CarControllerTest {
         carDto.setId("546546546");
         carDto.setOwnerId("1");
         carDto.setModel("BMW-EQV 300 Extra-long");
-        carDto.setHoursPower("10");
+        carDto.setHorsePower("10");
         mockMvc.perform(post("/api/car").contentType(MediaType.APPLICATION_JSON).
                 content(objectMapper.writeValueAsString(carDto))).andExpect(status().isOk()).andReturn();
     }
@@ -72,7 +72,7 @@ public class CarControllerTest {
         carDto.setId("10");
         carDto.setOwnerId("454333");
         carDto.setModel("BMW-X5");
-        carDto.setHoursPower("10");
+        carDto.setHorsePower("10");
         MvcResult result = mockMvc.perform(post("/api/car").contentType(MediaType.APPLICATION_JSON).
                 content(objectMapper.writeValueAsString(carDto))).andExpect(status().isNotFound()).andReturn();
         ErrorDetail error = objectMapper.readValue(result.getResponse().getContentAsString(), ErrorDetail.class);
@@ -87,7 +87,7 @@ public class CarControllerTest {
         carDto.setId("");
         carDto.setOwnerId(null);
         carDto.setModel("BMW-");
-        carDto.setHoursPower("-1");
+        carDto.setHorsePower("-1");
         MvcResult result = mockMvc.perform(post("/api/car").contentType(MediaType.APPLICATION_JSON).
                 content(objectMapper.writeValueAsString(carDto))).andExpect(status().isBadRequest()).andReturn();
         ErrorDetail error = objectMapper.readValue(result.getResponse().getContentAsString(), ErrorDetail.class);

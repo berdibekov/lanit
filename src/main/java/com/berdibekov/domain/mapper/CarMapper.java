@@ -44,7 +44,7 @@ public class CarMapper {
         car.setId(Long.parseLong(carDto.getId()));
         car.setVendor(vendorAndModel[0]);
         car.setModel(vendorAndModel[1]);
-        car.setHorsePower(Integer.parseInt(carDto.getHoursPower()));
+        car.setHorsePower(Integer.parseInt(carDto.getHorsePower()));
         return car;
     }
 
